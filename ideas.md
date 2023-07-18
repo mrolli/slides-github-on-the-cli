@@ -19,6 +19,12 @@ Repos:
 - gh repo create   # interactive
 - gh repo create mytestrepo --private --source=. --remote=origin
 
+gh issue
+    - create
+    - edit
+    - list
+    - comment
+    - develop
 
 gh pr merge
   - add link to comparison of merge strategies
