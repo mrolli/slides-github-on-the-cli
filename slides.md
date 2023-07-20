@@ -1,23 +1,23 @@
 ---
-theme: seriph
+theme: ../slidev-theme-unibeid
 background: https://source.unsplash.com/collection/94734566/1920x1080
 class: text-center
 highlighter: shiki
 lineNumbers: false
 info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
+  ## GitHub on the CLI
+  Presentation slides for Command Line Enthusiasts.
 
-  Learn more at [Sli.dev](https://sli.dev)
+  Learn more at [cli.github.com](https://cli.github.com)
 drawings:
   persist: false
 transition: slide-left
-title: Welcome to Slidev
+title: Welcome to GitHub on the CLI
 ---
 
-# Welcome to Slidev
+# Welcome to GitHub on the CLI
 
-Presentation slides for developers
+Presentation slides for Command Line Enthusiasts.
 
 <div class="pt-12">
   <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
@@ -29,15 +29,83 @@ Presentation slides for developers
   <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
     <carbon:edit />
   </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub"
+  <a href="https://github.com/mrolli/slides-github-on-the-cli" target="_blank" alt="Repo at GitHub"
     class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
     <carbon-logo-github />
   </a>
 </div>
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
+---
+
+# What is Github CLI (gh)?
+
+<v-click>
+
+gh brings GitHub to your terminal. Free and open source.
+
+gh has come to stay as first-class building block in the GitHub universe
+(130 releases in 3.5y!)
+
+gh is written in Go and therefore available on any platform.
+
+</v-click>
+
+<v-click>
+
+<br />
+
+## Ok, but why should I use GitHub CLI?
+
+</v-click>
+
+<v-click>
+
+> Goodbye, context switching between your terminal and your browser
+for a seamless and mouse-less efficient developer experience.
+
+* **Entire GitHub workflow:** Work with issues, pull request, checks, release and more on the CLI
+* **Script, automate and customize** almost any action with builtin commands
+* **GitHub API:** eventually also everything else available via the GitHub API
+* **Enterprise-ready:** works with GitHub.com and GitHub Enterprise Server
+
+<style>
+blockquote {
+  font-size: larger;
+  margin: 2em 0em;
+}
+</style>
+
+</v-click>
+
+---
+
+# Where can I get help on GitHub CLI?
+
+gh has an excellent built-in help that follow common usage:
+
+```bash
+gh --help
+gh COMMAND [SUBCOMMAND] --help
+```
+
+These built-in help texts are also available as a manual at https://cli.github.com/manual.
+
+The official micro-website on Github CLI is at https://cli.github.com with a
+short visual introduction to the tool and links to the **manual** and the **release
+notes**. The latter are well maintained and a good read after every upgrade.
+
+gh is open source. Find the repo at https://github.com/cli/cli
+
+---
+
+# Installation
+
+Follow the [installation instructions](https://github.com/cli/cli#installation)
+for your platform. For me on macOS:
+
+```bash
+brew install gh
+```
 
 ---
 transition: fade-out
