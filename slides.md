@@ -1,5 +1,5 @@
 ---
-theme: ../slidev-theme-unibeid
+theme: ../slidev-theme-unibe
 background: https://source.unsplash.com/collection/94734566/1920x1080
 class: text-center
 highlighter: shiki
@@ -13,6 +13,7 @@ drawings:
   persist: false
 transition: slide-left
 title: Welcome to GitHub on the CLI
+hideInToc: true
 ---
 
 # Welcome to GitHub on the CLI
@@ -35,6 +36,8 @@ Presentation slides for Command Line Enthusiasts.
   </a>
 </div>
 
+---
+hideInToc: true
 ---
 
 # What is Github CLI (gh)?
@@ -78,6 +81,8 @@ blockquote {
 </v-click>
 
 ---
+hideInToc: true
+---
 
 # Where can I get help on GitHub CLI?
 
@@ -97,18 +102,104 @@ notes**. The latter are well maintained and a good read after every upgrade.
 gh is open source. Find the repo at https://github.com/cli/cli
 
 ---
+hideInToc: true
+---
 
-# Installation
+# Agenda
 
-Follow the [installation instructions](https://github.com/cli/cli#installation)
-for your platform. For me on macOS:
+<Toc></Toc>
+
+---
+
+# Installing the GitHub CLI binary
+
+Follow the installation instructions at https://github.com/cli/cli#installation
+for your platform.
+
+For me on macOS using Homebrew:
 
 ```bash
 brew install gh
 ```
 
+<br />
+
+<v-click>
+
+**On macOS:**  
+gh is available via Homebrew, MacPorts, Conda, Spack
+
+**On Windows:**  
+gh is available via WinGet, scoop, Chocolatey, Conda, and as downloadable MSI.
+
+**On Linux:**  
+gh is available either via official repos or as package downloads - see
+[Installing gh on Linux and BSD](https://github.com/cli/cli/blob/trunk/docs/install_linux.md)
+
+</v-click>
+
+---
+
+# Authenticating to GH and GHES
+
+#### Login to github.com or our GHES
+
+```bash
+gh auth login
+```
+
+![Auth to GHES illustrated](images/gh_auth_login.png)
+
+---
+hideInToc: true
+---
+
+# Authentication (cont.)
+
+#### Show current authentication status
+
+```bash
+gh auth status
+```
+
+![Auth status](images/gh_auth_status.png)
+
+---
+
+# Manage Permission Scopes
+
+As an example, we are going to add the read:project permission scope to the
+GHES token:
+
+```bash
+gh auth refresh --scopes read:project --hostname github.unibe.ch
+```
+
+For more information on managing permission scopes, see gh auth refresh --help
+
+<br />
+
+# Setup the gh Credential Helper
+
+Configure git to use GitHub CLI as the credential helper for all authenticated hosts
+
+```bash
+gh auth setup-git
+```
+
+This edits your git configuration file.
+
+---
+layout: section
+---
+
+# Working with Repositories
+
+This is a test.
+
 ---
 transition: fade-out
+hideInToc: true
 ---
 
 # What is Slidev?
@@ -151,6 +242,7 @@ Here is another comment.
 
 ---
 layout: default
+hideInToc: true
 ---
 
 # Table of contents
@@ -165,6 +257,7 @@ layout: default
 transition: slide-up
 
 level: 2
+hideInToc: true
 ---
 
 # Navigation
@@ -191,6 +284,7 @@ Hover on the bottom-left corner to see the navigation's controls panel, [learn m
 ---
 layout: image-right
 image: https://source.unsplash.com/collection/94734566/1920x1080
+hideInToc: true
 ---
 
 # Code
@@ -228,6 +322,8 @@ function updateUser(id: number, update: User) {
 }
 </style>
 
+---
+hideInToc: true
 ---
 
 # Components
@@ -272,6 +368,7 @@ Also, HTML elements are valid:
 
 
 ---
+hideInToc: true
 class: px-20
 ---
 
@@ -304,6 +401,7 @@ check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
 
 ---
 preload: false
+hideInToc: true
 ---
 
 # Animations
@@ -379,6 +477,8 @@ const final = {
 </div>
 
 ---
+hideInToc: true
+---
 
 # LaTeX
 
@@ -406,6 +506,8 @@ $$
 
 [Learn more](https://sli.dev/guide/syntax#latex)
 
+---
+hideInToc: true
 ---
 
 # Diagrams
@@ -489,11 +591,13 @@ database "MySql" {
 ---
 src: ./pages/multiple-entries.md
 hide: false
+hideInToc: true
 ---
 
 ---
 layout: center
 class: text-center
+hideInToc: true
 ---
 
 # Learn More
