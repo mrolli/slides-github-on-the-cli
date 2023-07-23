@@ -15,14 +15,48 @@ gh repo edit --help
 gh repo edit --enable-wiki
 gh repo view testy -w      # introduce -w
 
+
 gh repo clone testy
 cd testy
 gh repo view
+# Exkurs "author config"
+git user.email
+git-id-branding
+git user.email
+less $(which git-id-branding)
+less .git/config
 
+
+# Collaboration: Fremdes Repo forken
 cd ..
-gh repo list --fork
-gh repo clone mrolli/anointans_journal
-gh remote -v
+gh repo fork idsys-unibe-ch/forkme4edu
+cd forkme4edu
+git remote -v
+gh repo view
+# Warum?
 gh repo set-default
+git-id-branding
 
-gh repo fork idasm-unibe-ch/devops_conecptsgi
+
+cd ../testy
+gh issue list
+gh issue list --help
+gh issue list -s all
+gh issue status
+gh status -o idsys-unibe-ch
+gh issue view 2
+gh issue view 2 -w
+gh issue create
+gh issue view 3
+gh issue edit 3
+gh issue comment 3
+gh issue comment 3 --body-file ../directory_layout.txt
+
+cd ../forkme4edu
+gh issue create
+# Excursion "issue templates" - https://docs.github.com/communities
+gh repo view idsys-unibe-ch/.github -w
+
+cd ../testy
+gh issue develop 3
+

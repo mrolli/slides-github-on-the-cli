@@ -210,6 +210,36 @@ Creating, cloning, forking and all the rest
 hideInToc: true
 ---
 
+# Overview of repo commands
+
+```
+Work with GitHub repositories.
+
+USAGE
+  gh repo <command> [flags]
+
+GENERAL COMMANDS
+  create:      Create a new repository
+  list:        List repositories owned by user or organization
+
+TARGETED COMMANDS
+  archive:     Archive a repository
+  clone:       Clone a repository locally
+  delete:      Delete a repository
+  deploy-key:  Manage deploy keys in a repository
+  edit:        Edit repository settings
+  fork:        Create a fork of a repository
+  rename:      Rename a repository
+  set-default: Configure default repository for this directory
+  sync:        Sync a repository
+  unarchive:   Unarchive a repository
+  view:        View a repository
+```
+
+---
+hideInToc: true
+---
+
 # Listing Repositories
 
 Show all repos my Repositories on github.com
@@ -239,34 +269,6 @@ alias lgh="GH_HOST=github.unibe.ch gh"
 hideInToc: true
 ---
 
-# Overview of repo commands
-
-```
-USAGE
-  gh repo <command> [flags]
-
-GENERAL COMMANDS
-  create:      Create a new repository
-  list:        List repositories owned by user or organization
-
-TARGETED COMMANDS
-  archive:     Archive a repository
-  clone:       Clone a repository locally
-  delete:      Delete a repository
-  deploy-key:  Manage deploy keys in a repository
-  edit:        Edit repository settings
-  fork:        Create a fork of a repository
-  rename:      Rename a repository
-  set-default: Configure default repository for this directory
-  sync:        Sync a repository
-  unarchive:   Unarchive a repository
-  view:        View a repository
-```
-
----
-hideInToc: true
----
-
 # Forking and Cloning Repositories
 
 #### Clone an existing repo of mine
@@ -282,6 +284,110 @@ Receiving objects: 100% (46/46), 11.43 KiB | 1.04 MiB/s, done.
 Resolving deltas: 100% (6/6), done.
 ```
 
+---
+layout: section
+---
+
+# Working with Issues
+
+Creating, commenting, properties, templates, ...
+
+---
+hideInToc: true
+---
+
+# Overview of issue commands
+
+```
+Work with GitHub issues.
+
+USAGE
+  gh issue <command> [flags]
+
+GENERAL COMMANDS
+  create:      Create a new issue
+  list:        List issues in a repository
+  status:      Show status of relevant issues
+
+TARGETED COMMANDS
+  close:       Close issue
+  comment:     Add a comment to an issue
+  delete:      Delete issue
+  develop:     Manage linked branches for an issue
+  edit:        Edit issues
+  lock:        Lock issue conversation
+  pin:         Pin a issue
+  reopen:      Reopen issue
+  transfer:    Transfer issue to another repository
+  unlock:      Unlock issue conversation
+  unpin:       Unpin a issue
+  view:        View an issues
+```
+
+---
+layout: section
+---
+
+# Working with Pull Requests
+
+Creating, commenting, templates, merging ...
+
+---
+hideInToc: true
+---
+
+Common use cases around PRs
+
+---
+layout: section
+---
+
+# Working with Releases
+
+Tags, changelogs, ...
+
+---
+hideInToc: true
+---
+
+Common use cases around releases
+
+---
+layout: section
+---
+
+# Working with Projects
+
+---
+hideInToc: true
+---
+
+# Overview of project commands
+
+```
+Work with GitHub Projects. Note that the token you are using must have 'project' scope, which is not set by default. You can verify your token scope by running 'gh auth status' and add the project scope by running 'gh auth refresh -s project'.
+
+USAGE
+  gh project <command> [flags]
+
+AVAILABLE COMMANDS
+  close:       Close a project
+  copy:        Copy a project
+  create:      Create a project
+  delete:      Delete a project
+  edit:        Edit a project
+  field-create: Create a field in a project
+  field-delete: Delete a field in a project
+  field-list:  List the fields in a project
+  item-add:    Add a pull request or an issue to a project
+  item-archive: Archive an item in a project
+  item-create: Create a draft issue item in a project
+  item-delete: Delete an item from a project by ID
+  item-edit:   Edit an item in a project
+  item-list:   List the items in a project
+  list:        List the projects for an owner
+  view:        View a project
+```
 
 ---
 transition: fade-out
