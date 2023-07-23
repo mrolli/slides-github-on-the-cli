@@ -1,5 +1,5 @@
 ---
-theme: ../slidev-theme-unibe
+theme: default
 background: https://source.unsplash.com/collection/94734566/1920x1080
 class: text-center
 highlighter: shiki
@@ -48,6 +48,7 @@ gh brings GitHub to your terminal. Free and open source.
 
 gh has come to stay as first-class building block in the GitHub universe
 (130 releases in 3.5y!)
+
 
 gh is written in Go and therefore available on any platform.
 
@@ -108,6 +109,14 @@ hideInToc: true
 # Agenda
 
 <Toc></Toc>
+
+---
+layout: section
+---
+
+# Getting Started
+
+Installing and Configuring
 
 ---
 
@@ -195,7 +204,84 @@ layout: section
 
 # Working with Repositories
 
-This is a test.
+Creating, cloning, forking and all the rest
+
+---
+hideInToc: true
+---
+
+# Listing Repositories
+
+Show all repos my Repositories on github.com
+```bash
+gh repo list
+```
+
+Show all repos in organzation IDSYS on github.com
+```bash
+gh repo list idsys-unibe-ch
+```
+
+List all repos in org IDSYS on our GHES
+```bash
+GH_HOST=github.unibe.ch gh repo list idsys-unibe-ch
+```
+
+Having an hard-coded environment variable is not a good solution when you are
+using both GitHub platforms, therefore an elegant alias might come in handy:
+
+```bash
+# Add this to your .bashrc or .zshrc
+alias lgh="GH_HOST=github.unibe.ch gh"
+```
+
+---
+hideInToc: true
+---
+
+# Overview of repo commands
+
+```
+USAGE
+  gh repo <command> [flags]
+
+GENERAL COMMANDS
+  create:      Create a new repository
+  list:        List repositories owned by user or organization
+
+TARGETED COMMANDS
+  archive:     Archive a repository
+  clone:       Clone a repository locally
+  delete:      Delete a repository
+  deploy-key:  Manage deploy keys in a repository
+  edit:        Edit repository settings
+  fork:        Create a fork of a repository
+  rename:      Rename a repository
+  set-default: Configure default repository for this directory
+  sync:        Sync a repository
+  unarchive:   Unarchive a repository
+  view:        View a repository
+```
+
+---
+hideInToc: true
+---
+
+# Forking and Cloning Repositories
+
+#### Clone an existing repo of mine
+
+```bash
+➜ gh repo clone mrolli/testy
+Cloning into 'testy'...
+remote: Enumerating objects: 46, done.
+remote: Counting objects: 100% (46/46), done.
+remote: Compressing objects: 100% (29/29), done.
+remote: Total 46 (delta 6), reused 46 (delta 6), pack-reused 0
+Receiving objects: 100% (46/46), 11.43 KiB | 1.04 MiB/s, done.
+Resolving deltas: 100% (6/6), done.
+```
+
 
 ---
 transition: fade-out

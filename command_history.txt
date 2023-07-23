@@ -1,0 +1,28 @@
+
+
+### Working with Repositories ###
+
+gh repo list
+gh repo list idsys-unibe-ch
+GH_HOST=github.unibe.ch gh repo list idsys-unibe-ch
+alias lgh="GH_HOST=github.unibe.ch gh"
+
+gh repo view testy
+gh repo view idsys-unibe-ch/idsys.ansible
+gh repo edit testy         # owner need, voila [HOST/] possible
+gh repo edit mrolli/testy
+gh repo edit --help
+gh repo edit --enable-wiki
+gh repo view testy -w      # introduce -w
+
+gh repo clone testy
+cd testy
+gh repo view
+
+cd ..
+gh repo list --fork
+gh repo clone mrolli/anointans_journal
+gh remote -v
+gh repo set-default
+
+gh repo fork idasm-unibe-ch/devops_conecptsgi
