@@ -9,6 +9,7 @@ info: |
   Presentation slides for Command Line Enthusiasts.
 
   Learn more at [cli.github.com](https://cli.github.com)
+download: true
 drawings:
   persist: false
 transition: slide-left
