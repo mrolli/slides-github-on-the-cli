@@ -7,6 +7,7 @@ gh repo list idsys-unibe-ch
 GH_HOST=github.unibe.ch gh repo list idsys-unibe-ch
 alias lgh="GH_HOST=github.unibe.ch gh"
 
+
 gh repo view testy
 gh repo view idsys-unibe-ch/idsys.ansible
 gh repo edit testy         # owner need, voila [HOST/] possible
@@ -33,9 +34,22 @@ gh repo fork idsys-unibe-ch/forkme4edu
 cd forkme4edu
 git remote -v
 gh repo view
-# Warum?
+# Warum fragt er nach default repo?
 gh repo set-default
 git-id-branding
+
+
+cd ..
+mkdir ng-superparser
+cd ng-superparser
+echo "# Next-Gen Superparser" > README.md
+git init
+git add README.md
+git commit -m "Let's get this started"
+git l
+gh repo create --help
+gh repo create mrolli/nextgen-superparser --public --source=.
+git push -u origin main
 
 
 cd ../testy
@@ -48,7 +62,9 @@ gh issue view 2
 gh issue view 2 -w
 gh issue create
 gh issue view 3
-gh issue edit 3
+gh issue edit 3        # Label hinzufügen
+gh issue edit --help   # Stichwort @me
+gh issue edit 1 --add-assignee "@me"
 gh issue comment 3
 gh issue comment 3 --body-file ../directory_layout.txt
 
@@ -57,6 +73,68 @@ gh issue create
 # Excursion "issue templates" - https://docs.github.com/communities
 gh repo view idsys-unibe-ch/.github -w
 
+
 cd ../testy
-gh issue develop 3
+gh issue develop 3 --checkout
+vi README.md
+git add README.md
+git commit     # Note: Fixes, relates, ...
+# Excursion: https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue
+# Excursion: add link to semanting commit messages
+# https://sparkbox.com/foundry/semantic_commit_messages
+# http://karma-runner.github.io/0.10/dev/git-commit-msg.html
+# https://www.conventionalcommits.org/en/v1.0.0/
+git push
+gh repo view -w
+gh pr --help
+gh pr create --help
+gh pr create    # ADD: Fixes #3!
+gh pr list
+gh pr status
+gh pr view4
+gh pr view 4 -w
+gh pr diff
+cd ..
+gh repo clone testy blupp
+cd blupp
+gh pr list
+gh pr checkout 4
+gh pr review 4
+# Excursion: idsys.ansible: gh pr view 203
+cd ..
+rm -rf blupp
+cd testy
+vi README.md
+git add README.md
+git ci -m "blupp"
+git rebase -i HEAD~2
+git push -f
+gh pr merge
+git branches
+git fap
+git branches
+git l
+gh pr view 4 -w
+
+
+cd ../forkme4edu
+git remote -v
+
+
+
+### OTHER INTERESTING FEATURES ###
+
+### Worflows/Runs
+# switch to myitjournal
+gh workflow list
+gh workflow view ci
+gh workflow view ci.yml --yaml
+gh run list
+gh run view 5329801045
+gh run view 5329801045 --log-failed
+
+# Extensions
+gh label --help
+gh label list
+gh markdown-preview README.md
 

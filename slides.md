@@ -247,17 +247,17 @@ Show all repos my Repositories on github.com
 gh repo list
 ```
 
-Show all repos in organzation IDSYS on github.com
+Show all repos of IDSYS on github.com
 ```bash
 gh repo list idsys-unibe-ch
 ```
 
-List all repos in org IDSYS on our GHES
+List all repos of IDSYS on our GHES
 ```bash
 GH_HOST=github.unibe.ch gh repo list idsys-unibe-ch
 ```
 
-Having an hard-coded environment variable is not a good solution when you are
+Having a hard-coded environment variable is not an ideal solution when you are
 using both GitHub platforms, therefore an elegant alias might come in handy:
 
 ```bash
@@ -338,25 +338,70 @@ hideInToc: true
 
 Common use cases around PRs
 
----
-layout: section
----
-
-# Working with Releases
-
-Tags, changelogs, ...
 
 ---
 hideInToc: true
 ---
 
-Common use cases around releases
+# On Merge Strategies
+
+When working with PR, Github features three different merge methods:
+
+* Merge pull request
+* Squash and merge
+* Rebase and merge
+
+The allowed merge methods can be configured on a per repo basis.
+
+> In a project, wisely choose one and stick to it! There is no right or false!
+
+More information on this topic:
+
+* [Official documentation on merge methods](https://docs.github.com/de/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/about-merge-methods-on-github)
+* [GitHub Merge straegies explained by examples](https://github.com/MarcBoissonneault/github-merge-strategies)
+
+Also mentioned here shall be the [merge queue feature](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue) that GitHub offers.
+
 
 ---
 layout: section
 ---
 
-# Working with Projects
+# Other Interesting Features
+
+API, projects, releases, workflows, aliases, ruleset, extensions, ...
+
+---
+hideInToc: true
+---
+
+# Calling the GitHub REST API
+
+```
+function setup_snow_autolinkref {
+  autolinkref=$(gh api --method GET \
+    -H "Accept: application/vnd.github+json" \
+    -H "X-GitHub-Api-Version: 2022-11-28" \
+    "/repos/$1/autolinks" --jq '.[] | select(.key_prefix=="SNOW-")'
+  )
+
+  if [ -n "$autolinkref" ]; then
+    success "Autolink reference for SNOW already setup."
+    return 0
+  fi
+
+  gh api \
+    --method POST \
+    -H "Accept: application/vnd.github+json" \
+    -H "X-GitHub-Api-Version: 2022-11-28" \
+    "/repos/$1/autolinks" \
+    -f key_prefix="SNOW-" \
+   -f url_template="https://serviceportal.unibe.ch/text_search_exact_match.do?sysparm_search=<num>" \
+   -F is_alphanumeric=true
+}
+```
+
+See https://docs.github.com/en/rest
 
 ---
 hideInToc: true
@@ -365,7 +410,10 @@ hideInToc: true
 # Overview of project commands
 
 ```
-Work with GitHub Projects. Note that the token you are using must have 'project' scope, which is not set by default. You can verify your token scope by running 'gh auth status' and add the project scope by running 'gh auth refresh -s project'.
+Work with GitHub Projects. Note that the token you are using must have 'project'
+scope, which is not set by default. You can verify your token scope by running
+'gh auth status' and add the project scope by running 'gh auth refresh -s
+project'.
 
 USAGE
   gh project <command> [flags]
@@ -388,6 +436,10 @@ AVAILABLE COMMANDS
   list:        List the projects for an owner
   view:        View a project
 ```
+
+---
+hideInToc: true
+---
 
 ---
 transition: fade-out
