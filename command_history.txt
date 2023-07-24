@@ -1,0 +1,181 @@
+### Working with Repositories ###
+
+gh repo list
+gh repo list idsys-unibe-ch
+GH_HOST=github.unibe.ch gh repo list idsys-unibe-ch
+alias lgh="GH_HOST=github.unibe.ch gh"
+
+
+gh repo view testy
+gh repo view idsys-unibe-ch/idsys.ansible
+gh repo edit testy         # owner need, voila [HOST/] possible
+gh repo edit mrolli/testy
+gh repo edit --help
+gh repo edit --enable-wiki
+gh repo view testy -w      # introduce -w
+
+
+gh repo clone testy
+cd testy
+gh repo view
+# Exkurs "author config"
+git user.email
+git-id-branding
+git user.email
+less $(which git-id-branding)
+less .git/config
+
+
+# Collaboration: Fremdes Repo forken
+cd ..
+gh repo fork idsys-unibe-ch/forkme4edu
+cd forkme4edu
+git remote -v
+gh repo view
+# Warum fragt er nach default repo?
+gh repo set-default
+git-id-branding
+
+
+cd ..
+mkdir ng-superparser
+cd ng-superparser
+echo "# Next-Gen Superparser" > README.md
+git init
+git add README.md
+git commit -m "Let's get this started"
+git l
+gh repo create --help
+gh repo create mrolli/ng-superparser --public --source=.
+git push -u origin main
+
+
+cd ../testy
+gh issue list
+gh issue list --help
+gh issue list -s all
+gh issue status
+gh status -o idsys-unibe-ch
+gh issue view 2
+gh issue view 2 -w
+
+
+cd ../ng-superparser
+gh issue create
+gh issue view 1
+gh issue edit 1        # Label hinzufügen
+gh issue edit --help   # Stichwort @me
+gh issue edit 1 --add-assignee "@me"
+gh issue comment 1
+gh issue comment 1 --body-file ../directory_layout.txt
+
+
+cd ../forkme4edu
+gh issue create
+# Excursion "issue templates"
+# https://docs.github.com/communities
+gh repo view idsys-unibe-ch/.github -w
+
+
+cd ../ng-superparser
+gh issue develop 1 --checkout
+vi README.md
+git add README.md
+git commit     # Note: Fixes, relates, ...
+# Excursion: Linking a PR to an issue
+# https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue
+# Excursion: About semantic/conventional commits
+# https://sparkbox.com/foundry/semantic_commit_messages
+# http://karma-runner.github.io/0.10/dev/git-commit-msg.html
+# https://www.conventionalcommits.org/en/v1.0.0/
+git push
+gh repo view -w
+gh pr --help
+gh pr create --help
+gh pr create    # ADD: Fixes #3!
+gh pr list
+gh pr status
+gh pr view4
+gh pr view 2 -w
+gh pr diff
+# Review process
+cd ..
+gh repo clone ng-superparser blupp
+cd blupp
+gh pr list
+gh pr checkout 2
+gh pr review 2
+# Excursion: idsys.ansible: gh pr view 203
+# Excurison: packer: gh pr view 12532 / gh pr checks 12532
+cd ..
+rm -rf blupp
+cd testy
+vi README.md
+git add README.md
+git ci -m "blupp"
+git rebase -i HEAD~2
+git push -f
+gh pr merge
+git branches
+git fap
+git branches
+git l
+gh pr view 4 -w
+
+
+
+cd ../forkme4edu
+git remote -v
+git pull upstream main
+git push origin main
+git issue develop 1
+vi README.md
+git add README.md
+git ci -m "feat: add me to the list of visitors"
+git push origin 1-
+gh pr create
+gh pr view 2
+gh pr view 2 -w
+
+
+
+### OTHER INTERESTING FEATURES ###
+
+### Worflows/Runs
+# switch to myitjournal
+gh workflow list
+gh workflow view ci
+gh workflow view ci.yml --yaml
+gh run list
+gh run view 5329801045
+gh run view 5329801045 --log-failed
+
+# Releases
+cd ../ng-superparser
+gh issue create --title "Add feature XY"
+gh issue develop 3 --checkout
+echo "temp" > .gitignore
+git add .gitignore
+git ci -m "feat: add git ignore file"
+git push
+gh pr create
+gh pr merge
+git pull --ff-only
+git tag -a -s "Release 1.0" v1.0
+git push --tags
+gh release --help
+gh release create
+gh release view
+gh release download v1.0 --archive=tar.gz
+
+# Extensions
+gh label --help
+gh label list
+gh markdown-preview README.md
+
+
+
+
+### Aufräumen ###
+gh repo delete mrolli/ng-superparser
+gh repo delete mrolli/forkme4edu

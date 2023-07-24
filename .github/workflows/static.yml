@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: '14'
       - name: Install dependencies
@@ -16,7 +16,7 @@ jobs:
       - name: Install for PDF
         run: npm i -D playwright-chromium
       - name: Build
-        run: slidev build --base /slides-gh-actions-n-runners/
+        run: slidev build --base /slides-github-on-the-cli/
       - name: Deploy pages
         uses: crazy-max/ghaction-github-pages@v3
         with:
