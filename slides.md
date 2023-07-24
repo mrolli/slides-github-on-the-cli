@@ -148,6 +148,8 @@ gh is available either via official repos or as package downloads - see
 </v-click>
 
 ---
+hideInToc: true
+---
 
 # Authenticating to GH and GHES
 
@@ -210,7 +212,7 @@ Creating, cloning, forking and all the rest
 hideInToc: true
 ---
 
-# Overview of repo commands
+# Overview of Repo Commands
 
 ```
 Work with GitHub repositories.
@@ -242,17 +244,17 @@ hideInToc: true
 
 # Listing Repositories
 
-Show all repos my Repositories on github.com
+* Show all repos my Repositories on github.com
 ```bash
 gh repo list
 ```
 
-Show all repos of IDSYS on github.com
+* Show all repos of IDSYS on github.com
 ```bash
 gh repo list idsys-unibe-ch
 ```
 
-List all repos of IDSYS on our GHES
+* List all repos of IDSYS on our GHES
 ```bash
 GH_HOST=github.unibe.ch gh repo list idsys-unibe-ch
 ```
@@ -271,18 +273,60 @@ hideInToc: true
 
 # Forking and Cloning Repositories
 
-#### Clone an existing repo of mine
+* Clone an existing repo of mine
 
 ```bash
-➜ gh repo clone mrolli/testy
-Cloning into 'testy'...
-remote: Enumerating objects: 46, done.
-remote: Counting objects: 100% (46/46), done.
-remote: Compressing objects: 100% (29/29), done.
-remote: Total 46 (delta 6), reused 46 (delta 6), pack-reused 0
-Receiving objects: 100% (46/46), 11.43 KiB | 1.04 MiB/s, done.
-Resolving deltas: 100% (6/6), done.
+gh repo clone mrolli/testy
 ```
+
+<br />
+
+* Fork a repository of another user/organisation
+
+```bash
+gh repo fork idsys-unibe-ch/forkme4edu
+```
+
+This creates a fork in your user profile interactively. After forking you work
+on feature branches in your fork and then you create a pull request against the
+main branch of the upstream repository.
+
+> This is the preferred way to contribute to repos where you don't have any
+> permissions. The target repo only needs to be public.
+
+---
+hideInToc: true
+---
+
+# Creating new repositories
+
+* Create a new repo on github.com interactively
+
+```bash
+gh repo create
+```
+
+<br />
+
+* Create a new repo using flags and clone it locally
+
+```bash
+  gh repo create my-project --public --clone
+```
+
+<br />
+
+* Create a new repo on github.com from an existing local repo:
+
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+gh repo create myorg/myrepo --public --source=.
+git push -u origin main
+```
+
+
 
 ---
 layout: section
@@ -296,7 +340,7 @@ Creating, commenting, properties, templates, ...
 hideInToc: true
 ---
 
-# Overview of issue commands
+# Overview of Issue Commands
 
 ```
 Work with GitHub issues.
@@ -325,6 +369,39 @@ TARGETED COMMANDS
 ```
 
 ---
+hideInToc: true
+---
+
+# Examples for working with issues 
+
+* List closed issues:
+  ```bash
+    gh issue list -s closed
+  ```
+* List all open issue that are relevant for me:
+  ```bash
+    gh issue status
+  ```
+* List all issue in organisation that are relevant for me:
+  ```bash
+    gh status -o idsys-unibe-ch
+  ```
+* View specific issue in terminal...
+  ```bash
+    gh issue view
+  ```
+* Edit specific issue:
+  ```bash
+    gh issue edit 123 --add-label bug
+  ```
+* Comment on specific issue using the content of a file:
+  ```bash
+    gh issue comment 123 --body-file ../output.log
+  ```
+
+
+
+---
 layout: section
 ---
 
@@ -336,7 +413,65 @@ Creating, commenting, templates, merging ...
 hideInToc: true
 ---
 
-Common use cases around PRs
+# Overview of Pull Request commands
+
+```bash
+Work with GitHub pull requests.
+
+USAGE
+  gh pr <command> [flags]
+
+GENERAL COMMANDS
+  create:      Create a pull request
+  list:        List pull requests in a repository
+  status:      Show status of relevant pull requests
+
+TARGETED COMMANDS
+  checkout:    Check out a pull request in git
+  checks:      Show CI status for a single pull request
+  close:       Close a pull request
+  comment:     Add a comment to a pull request
+  diff:        View changes in a pull request
+  edit:        Edit a pull request
+  lock:        Lock pull request conversation
+  merge:       Merge a pull request
+  ready:       Mark a pull request as ready for review
+  reopen:      Reopen a pull request
+  review:      Add a review to a pull request
+  unlock:      Unlock pull request conversation
+  view:        View a pull request
+```
+
+---
+hideInToc: true
+---
+
+# Examples for working with pull requests 
+
+* List open pull requests:
+  ```bash
+    gh pr list
+  ```
+* Work on an issue by creating a linked branch and switch to the branch:
+  ```bash
+    gh issue develop 123 --checkout
+  ```
+* List all open PRs that are relevant for me:
+  ```bash
+    gh gh pr status
+  ```
+* Create a new PR interactively:
+  ```bash
+    gh pr create
+  ```
+* Show check runs on specific PR:
+  ```bash
+    gh pr check 123
+  ```
+* Merge specific PR using the rebase merge strategy:
+  ```bash
+    gh pr merge --rebase
+  ```
 
 
 ---
@@ -363,19 +498,20 @@ More information on this topic:
 Also mentioned here shall be the [merge queue feature](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue) that GitHub offers.
 
 
+
 ---
 layout: section
 ---
 
 # Other Interesting Features
 
-API, projects, releases, workflows, aliases, ruleset, extensions, ...
+API, projects, releases, workflows, aliases, labels, extensions, ...
 
 ---
-hideInToc: true
+level: 2
 ---
 
-# Calling the GitHub REST API
+# GitHub REST API Usage
 
 ```
 function setup_snow_autolinkref {
@@ -404,10 +540,11 @@ function setup_snow_autolinkref {
 See https://docs.github.com/en/rest
 
 ---
-hideInToc: true
+level: 2
+title: Project Commands (new)
 ---
 
-# Overview of project commands
+# Overview of Project Commands
 
 ```
 Work with GitHub Projects. Note that the token you are using must have 'project'
@@ -438,8 +575,149 @@ AVAILABLE COMMANDS
 ```
 
 ---
-hideInToc: true
+level: 2
+title: Release Management
 ---
+
+# Managing Project Releases
+
+It's possible to create releases based on tags right from the CLI. First prepare
+the tag to create a release for:
+
+```bash
+git checkout main
+git tag -a -s -m "Release v1.0" v1.0
+git push origin --tags
+```
+
+Then create the release - examples:
+
+* Interactively create a release
+```bash
+gh release create
+```
+* Non-interactively create a release
+```bash
+gh release create v1.2.3 --notes "bugfix release"
+```
+* Use automatically generated release notes
+```bash
+gh release create v1.2.3 --generate-notes
+```
+* Create a release and start a discussion
+```bash
+gh release create v1.2.3 --discussion-category "General"
+```
+
+---
+level: 2
+title: Workflow Management
+---
+
+# Managing Workflows and Check Runs
+
+```bash
+List, view, and run workflows in GitHub Actions.
+
+  gh workflow <command> [flags]
+
+AVAILABLE COMMANDS
+  disable:     Disable a workflow
+  enable:      Enable a workflow
+  list:        List workflows
+  run:         Run a workflow by creating a workflow_dispatch event
+  view:        View the summary of a workflow
+
+```
+
+```bash
+List, view, and watch recent workflow runs from GitHub Actions.
+
+  gh run <command> [flags]
+
+AVAILABLE COMMANDS
+  cancel:      Cancel a workflow run
+  delete:      Delete a workflow run
+  download:    Download artifacts generated by a workflow run
+  list:        List recent workflow runs
+  rerun:       Rerun a run
+  view:        View a summary of a workflow run
+  watch:       Watch a run until it completes, showing its progress
+```
+
+---
+level: 2
+title: Extending GitHub CLI
+---
+
+# Extensions
+
+### Overview of Extension Commands
+
+```bash
+AVAILABLE COMMANDS
+  browse:      Enter a UI for browsing, adding, and removing extensions
+  create:      Create a new extension
+  exec:        Execute an installed extension
+  install:     Install a gh extension from a repository
+  list:        List installed extension commands
+  remove:      Remove an installed extension
+  search:      Search extensions to the GitHub CLI
+  upgrade:     Upgrade installed extensions
+```
+
+<br />
+
+### Noteworthy extensions
+
+```bash
+❯ gh extension list
+gh label             heaths/gh-label               v0.4.0
+gh markdown-preview  yusukebe/gh-markdown-preview  23d1a241
+```
+
+---
+level: 2
+title: Label Management
+---
+
+# Managing GitHub Labels
+
+* Builtin labels commands
+
+```bash
+AVAILABLE COMMANDS
+  clone:       Clones labels from one repository to another
+  create:      Create a new label
+  delete:      Delete a label from a repository
+  edit:        Edit a label
+  list:        List labels in a repository
+```
+
+* Commands in heaths/gh-labels extensions
+
+```bash
+Available Commands:
+  completion  generate the autocompletion script for the specified shell
+  create      Create the label <name> in the repository
+  delete      Delete the label <name> from the repository
+  edit        Edit the label <name> in the repository
+  export      Export labels from the repository to <path>, or stdout if <path> is "-".
+  help        Help about any command
+  import      Import labels into the repository from <path>, or stdin if <path> is "-".
+  list        List labels in the repository, optionally matching substring [name] in the label name or description
+````
+
+---
+hideInToc: true
+layout: cover
+background: https://source.unsplash.com/collection/94734566/1920x1080
+---
+
+# Thank you!
+
+## Questions? More feature demonstration?
+
 
 ---
 transition: fade-out

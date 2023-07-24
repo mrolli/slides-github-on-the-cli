@@ -59,6 +59,7 @@ gh status -o idsys-unibe-ch
 gh issue view 2
 gh issue view 2 -w
 
+
 cd ../ng-superparser
 gh issue create
 gh issue view 1
@@ -67,6 +68,7 @@ gh issue edit --help   # Stichwort @me
 gh issue edit 1 --add-assignee "@me"
 gh issue comment 1
 gh issue comment 1 --body-file ../directory_layout.txt
+
 
 cd ../forkme4edu
 gh issue create
@@ -96,6 +98,7 @@ gh pr status
 gh pr view4
 gh pr view 2 -w
 gh pr diff
+# Review process
 cd ..
 gh repo clone ng-superparser blupp
 cd blupp
@@ -103,6 +106,7 @@ gh pr list
 gh pr checkout 2
 gh pr review 2
 # Excursion: idsys.ansible: gh pr view 203
+# Excurison: packer: gh pr view 12532 / gh pr checks 12532
 cd ..
 rm -rf blupp
 cd testy
@@ -146,11 +150,6 @@ gh run list
 gh run view 5329801045
 gh run view 5329801045 --log-failed
 
-# Extensions
-gh label --help
-gh label list
-gh markdown-preview README.md
-
 # Releases
 cd ../ng-superparser
 gh issue create --title "Add feature XY"
@@ -168,6 +167,12 @@ gh release --help
 gh release create
 gh release view
 gh release download v1.0 --archive=tar.gz
+
+# Extensions
+gh label --help
+gh label list
+gh markdown-preview README.md
+
 
 
 
