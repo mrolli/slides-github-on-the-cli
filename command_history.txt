@@ -1,5 +1,3 @@
-
-
 ### Working with Repositories ###
 
 gh repo list
@@ -48,7 +46,7 @@ git add README.md
 git commit -m "Let's get this started"
 git l
 gh repo create --help
-gh repo create mrolli/nextgen-superparser --public --source=.
+gh repo create mrolli/ng-superparser --public --source=.
 git push -u origin main
 
 
@@ -60,27 +58,31 @@ gh issue status
 gh status -o idsys-unibe-ch
 gh issue view 2
 gh issue view 2 -w
+
+cd ../ng-superparser
 gh issue create
-gh issue view 3
-gh issue edit 3        # Label hinzufügen
+gh issue view 1
+gh issue edit 1        # Label hinzufügen
 gh issue edit --help   # Stichwort @me
 gh issue edit 1 --add-assignee "@me"
-gh issue comment 3
-gh issue comment 3 --body-file ../directory_layout.txt
+gh issue comment 1
+gh issue comment 1 --body-file ../directory_layout.txt
 
 cd ../forkme4edu
 gh issue create
-# Excursion "issue templates" - https://docs.github.com/communities
+# Excursion "issue templates"
+# https://docs.github.com/communities
 gh repo view idsys-unibe-ch/.github -w
 
 
-cd ../testy
-gh issue develop 3 --checkout
+cd ../ng-superparser
+gh issue develop 1 --checkout
 vi README.md
 git add README.md
 git commit     # Note: Fixes, relates, ...
-# Excursion: https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue
-# Excursion: add link to semanting commit messages
+# Excursion: Linking a PR to an issue
+# https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue
+# Excursion: About semantic/conventional commits
 # https://sparkbox.com/foundry/semantic_commit_messages
 # http://karma-runner.github.io/0.10/dev/git-commit-msg.html
 # https://www.conventionalcommits.org/en/v1.0.0/
@@ -92,14 +94,14 @@ gh pr create    # ADD: Fixes #3!
 gh pr list
 gh pr status
 gh pr view4
-gh pr view 4 -w
+gh pr view 2 -w
 gh pr diff
 cd ..
-gh repo clone testy blupp
+gh repo clone ng-superparser blupp
 cd blupp
 gh pr list
-gh pr checkout 4
-gh pr review 4
+gh pr checkout 2
+gh pr review 2
 # Excursion: idsys.ansible: gh pr view 203
 cd ..
 rm -rf blupp
@@ -117,8 +119,19 @@ git l
 gh pr view 4 -w
 
 
+
 cd ../forkme4edu
 git remote -v
+git pull upstream main
+git push origin main
+git issue develop 1
+vi README.md
+git add README.md
+git ci -m "feat: add me to the list of visitors"
+git push origin 1-
+gh pr create
+gh pr view 2
+gh pr view 2 -w
 
 
 
@@ -138,3 +151,26 @@ gh label --help
 gh label list
 gh markdown-preview README.md
 
+# Releases
+cd ../ng-superparser
+gh issue create --title "Add feature XY"
+gh issue develop 3 --checkout
+echo "temp" > .gitignore
+git add .gitignore
+git ci -m "feat: add git ignore file"
+git push
+gh pr create
+gh pr merge
+git pull --ff-only
+git tag -a -s "Release 1.0" v1.0
+git push --tags
+gh release --help
+gh release create
+gh release view
+gh release download v1.0 --archive=tar.gz
+
+
+
+### Aufräumen ###
+gh repo delete mrolli/ng-superparser
+gh repo delete mrolli/forkme4edu
