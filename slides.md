@@ -469,7 +469,7 @@ hideInToc: true
   ```bash
     gh pr check 123
   ```
-* Merge specific PR using the rebase merge strategy:
+* Merge specific PR using the rebase merge method:
   ```bash
     gh pr merge --rebase
   ```
@@ -479,7 +479,7 @@ hideInToc: true
 hideInToc: true
 ---
 
-# On Merge Strategies
+# On Merge Methods
 
 When working with PR, Github features three different merge methods:
 
