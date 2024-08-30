@@ -312,7 +312,7 @@ gh repo create
 * Create a new repo using flags and clone it locally
 
 ```bash
-  gh repo create my-project --public --clone
+gh repo create my-project --public --clone
 ```
 
 <br />
@@ -326,8 +326,6 @@ git commit -m "Initial commit"
 gh repo create myorg/myrepo --public --source=.
 git push -u origin main
 ```
-
-
 
 ---
 layout: section
