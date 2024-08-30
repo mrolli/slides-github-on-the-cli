@@ -1,6 +1,6 @@
 ---
 theme: default
-background: https://source.unsplash.com/collection/94734566/1920x1080
+background: https://cover.sli.dev
 class: text-center
 highlighter: shiki
 lineNumbers: false
