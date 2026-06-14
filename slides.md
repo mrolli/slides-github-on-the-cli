@@ -160,7 +160,7 @@ hideInToc: true
 gh auth login
 ```
 
-![Auth to GHES illustrated](/images/gh_auth_login.png)
+![Auth to GHES illustrated](./images/gh_auth_login.png)
 
 ---
 hideInToc: true
@@ -174,7 +174,7 @@ hideInToc: true
 gh auth status
 ```
 
-![Auth status](/images/gh_auth_status.png)
+![Auth status](./images/gh_auth_status.png)
 
 ---
 
