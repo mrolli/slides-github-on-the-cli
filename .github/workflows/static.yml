@@ -28,7 +28,7 @@ jobs:
       - name: Install for PDF
         run: npm i -g playwright-chromium
       - name: Build
-        run: slidev build --base /slides-gh-actions-n-runners/
+        run: slidev build --base /slides-github-on-the-cli/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
